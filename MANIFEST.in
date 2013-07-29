@@ -1,3 +1,5 @@
+include ez_setup.py
+include setuptools-0.9.6-py3.3.egg
 include LICENSE.txt
 include README.txt
 recursive-include PostBox/static *

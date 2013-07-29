@@ -36,9 +36,7 @@
     <arg value="test"/>
     <arg value="PostBox"/>
   </exec>
-  <property environment="env"/>
-  <exec executable="pip.exe" failonerror="true">
-    <env key="PATH" path="${env.PATH};C:/Python33/Scripts"/>
+  <exec executable="C:/Python33/Scripts/pip.exe" failonerror="true">
     <arg value="uninstall"/>
     <arg value="-y"/>
     <arg value="Django-PostBox"/>
