@@ -1,5 +1,6 @@
 build/
 dist/
-__pycache__
+__pycache__/
 *egg*/
-PostBox/__pycache__
+PostBox/__pycache__/
+test/PostalService/__pycache__/

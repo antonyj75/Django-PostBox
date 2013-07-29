@@ -4,7 +4,7 @@
 
 <property name="distfile" location="dist/Django-PostBox-0.1.zip"/>
 <property name="distdir" location="dist/Django-PostBox-0.1"/>
-<property name="websitedir" location="../PostalService"/>
+<property name="testwebsitedir" location="test"/>
 
 <target name="compile" description="Create the distribution package">
   <exec executable="python.exe" failonerror="true">
@@ -31,7 +31,7 @@
     <arg value="install"/>
     <arg value="--user"/>
   </exec>
-  <exec dir="${websitedir}" executable="python.exe" failonerror="true">
+  <exec dir="${testwebsitedir}" executable="python.exe" failonerror="true">
     <arg value="manage.py"/>
     <arg value="test"/>
     <arg value="PostBox"/>
