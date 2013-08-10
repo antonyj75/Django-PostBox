@@ -7,7 +7,7 @@
 <property name="testwebsitedir" location="test"/>
 
 <target name="compile" description="Create the distribution package">
-  <exec executable="python.exe" failonerror="true">
+  <exec executable="py.exe" failonerror="true">
     <arg value="setup.py"/>
     <arg value="sdist"/>
   </exec>
@@ -26,12 +26,12 @@
 <target name="test" depends="-check-file-exists" if="${file.exists}"
         description="Install PostBox package, run tests, and uninstall">
   <unzip src="${distfile}" dest="dist"/>
-  <exec dir="${distdir}" executable="python.exe" failonerror="true">
+  <exec dir="${distdir}" executable="py.exe" failonerror="true">
     <arg value="setup.py"/>
     <arg value="install"/>
     <arg value="--user"/>
   </exec>
-  <exec dir="${testwebsitedir}" executable="python.exe" failonerror="true">
+  <exec dir="${testwebsitedir}" executable="py.exe" failonerror="true">
     <arg value="manage.py"/>
     <arg value="test"/>
     <arg value="PostBox"/>
