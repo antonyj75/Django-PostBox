@@ -8,7 +8,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # url(r'^PostBox/', include('PostBox.urls')),
-    url(r'^$', include('PostBox.urls', namespace='PostBox')),
+    url(r'^', include('PostBox.urls', namespace='PostBox')),
     # Examples:
     # url(r'^$', 'PostBox.views.index', name='index'),
     # url(r'^PostalService/', include('PostalService.foo.urls')),

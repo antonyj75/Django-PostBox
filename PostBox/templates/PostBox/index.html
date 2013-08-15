@@ -2,6 +2,24 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'PostBox/style.css' %}" />
 
-<body bgcolor="#6767F0"><h1>{{text}}</h1>
-<img src="{% static "PostBox/images/post-box.jpg" %}" alt="PostBox image"/>
+<head>
+<title>Team Feedback Postal Service</title>
+</head>
+
+<body bgcolor="#6767F0">
+
+<h1>Welcome to the Feedback Postal Service!</h1>
+
+<img src="{% static "PostBox/images/post-box.jpg" %}" alt="PostBox image"/><br/>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'PostBox:selection' %}" method="get">
+  <input type="radio" name="choice" id="1" value="1"/>
+  <label for="1">I want to post a Thank you.</label><br/>
+  <input type="radio" name="choice" id="2" value="2"/>
+  <label for="2">I want to post a feedback.</label><br/>
+  <input type="submit" value="Write the Post"/>
+</form>
+
 </body>

@@ -3,4 +3,4 @@ dist/
 __pycache__/
 *egg*/
 PostBox/__pycache__/
-test/PostalService/__pycache__/
+PostalService/__pycache__/

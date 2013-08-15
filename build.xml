@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
-<project name="Django-PostBox" default="compile" basedir=".">
+<project name="Django-PostBox" default="build" basedir=".">
 <description>Build file for the PostBox web application.</description>
 
 <property name="distfile" location="dist/Django-PostBox-0.1.zip"/>
-<property name="distdir" location="dist/Django-PostBox-0.1"/>
-<property name="testwebsitedir" location="test"/>
 
 <target name="compile" description="Create the distribution package">
   <exec executable="py.exe" failonerror="true">
@@ -18,29 +16,21 @@
   <delete dir="dist"/>
 </target>
 
-<target name="-check-file-exists" unless="file.exists"
+<target name="-check-file-exists" depends="compile" unless="file.exists"
         description="Check whether dist zip file exists">
   <available property="file.exists" file="${distfile}"/>
   <echo message="The file check for ${distfile} returned ${file.exists}."/>
 </target>
-<target name="test" depends="-check-file-exists" if="${file.exists}"
-        description="Install PostBox package, run tests, and uninstall">
-  <unzip src="${distfile}" dest="dist"/>
-  <exec dir="${distdir}" executable="py.exe" failonerror="true">
-    <arg value="setup.py"/>
-    <arg value="install"/>
-    <arg value="--user"/>
-  </exec>
-  <exec dir="${testwebsitedir}" executable="py.exe" failonerror="true">
+
+<target name="build" depends="-check-file-exists" if="${file.exists}"
+        description="Run tests as part of build">
+
+  <exec executable="py.exe" failonerror="true">
     <arg value="manage.py"/>
     <arg value="test"/>
     <arg value="PostBox"/>
   </exec>
-  <exec executable="C:/Python33/Scripts/pip.exe" failonerror="true">
-    <arg value="uninstall"/>
-    <arg value="-y"/>
-    <arg value="Django-PostBox"/>
-  </exec>
+
 </target>
 
 </project>
