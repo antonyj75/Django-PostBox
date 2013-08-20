@@ -5,3 +5,4 @@ include README.txt
 recursive-include PostBox/static *
 recursive-include PostBox/templates *
 recursive-include docs *
+recursive-include thirdparty *

@@ -14,6 +14,13 @@ setup(
     name='Django-PostBox',
     version='0.1',
     packages=['PostBox'],
+    install_requires = [
+        'Django == 1.5.1',
+        'MySQL-python == 1.2.3',
+        ],
+    dependency_links = [
+        'thirdparty',
+        ],
     include_package_data=True,
     license='BSD License',
     description='A simple Django app to share feedback within a team.',
