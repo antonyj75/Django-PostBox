@@ -1,15 +1,11 @@
-{% load staticfiles %}
+{% extends "PostBox/base_post.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'PostBox/style.css' %}" />
+{% block title %}Post Thank You{% endblock %}
 
-<head>
-<title>Post Thank You</title>
-</head>
+{% block content %}
 
-<body>
+<h1>Thank You post to <cite>{{ user_name }}</cite> :</h1>
+<hr>
 
-<h1>Thank You Post</h1>
 
-Your choice is {{ choice }}
-
-</body>
+{% endblock %}
