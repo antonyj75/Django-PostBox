@@ -6,13 +6,21 @@
 <link rel="stylesheet" type="text/css" href="{% static 'PostBox/style.css' %}" />
 
 <head>
-  <title>{% block title %}Writing a Post{% endblock %}</title>
+  <title>{% block title %}Writing a Post{% endblock title %}</title>
 </head>
 
 <body>
-  <div id="content">
-    {% block content %}
-    {% endblock %}
-  </div>
+
+{% block header %}
+    <h1>Welcome to the Feedback Postal Service!</h1>
+{% endblock header %}
+
+{% block image %}
+    <img src="{% static "PostBox/images/post-box.jpg" %}" alt="PostBox image"/><br/><br/>
+{% endblock image %}
+
+{% block content %}
+{% endblock content %}
+
 </body>
 </html>

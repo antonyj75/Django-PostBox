@@ -19,4 +19,4 @@ Quick start
 
       url(r'^PostBox/', include('PostBox.urls'), namespace='PostBox')),
    Or you can include it in the index page of the website itself like this::
-      url(r'^$', include('PostBox.urls', namespace='PostBox')),
+      url(r'^', include('PostBox.urls', namespace='PostBox')),

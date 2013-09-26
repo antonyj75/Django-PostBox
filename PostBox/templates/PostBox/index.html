@@ -1,16 +1,8 @@
-{% load staticfiles %}
+{% extends "PostBox/base_post.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'PostBox/style.css' %}" />
+{% block title %}Team Feedback Postal Service{% endblock %}
 
-<head>
-<title>Team Feedback Postal Service</title>
-</head>
-
-<body>
-
-<h1>Welcome to the Feedback Postal Service!</h1>
-
-<img src="{% static "PostBox/images/post-box.jpg" %}" alt="PostBox image"/><br/><br/>
+{% block content %}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -29,4 +21,4 @@
   <input type="submit" value="Write the Post"/>
 </form>
 
-</body>
+{% endblock content %}

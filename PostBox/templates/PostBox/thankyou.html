@@ -1,11 +1,12 @@
 {% extends "PostBox/base_post.html" %}
+{% load staticfiles %}
 
 {% block title %}Post Thank You{% endblock %}
 
-{% block content %}
+{% block header %}
+    <h1>Thank You post to <cite>{{ user_name }}</cite> :</h1>
+{% endblock header %}
 
-<h1>Thank You post to <cite>{{ user_name }}</cite> :</h1>
-<hr>
-
-
-{% endblock %}
+{% block image %}
+    <img src="{% static "PostBox/images/Thank_you.jpg" %}" alt="ThankYou image"/><br/><br/>
+{% endblock image %}

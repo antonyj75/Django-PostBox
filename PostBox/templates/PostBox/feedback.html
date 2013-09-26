@@ -1,11 +1,23 @@
 {% extends "PostBox/base_post.html" %}
+{% load staticfiles %}
 
 {% block title %}Post Feedback{% endblock %}
 
+
+{% block header %}
+<h1>Feedback post to <cite>{{ user.username }}</cite> :</h1>
+{% endblock header %}
+
+{% block image %}
+    <img src="{% static "PostBox/images/writeletter.jpg" %}" alt="Feedback image"/><br/><br/>
+{% endblock image %}
+    <hr>
+
 {% block content %}
+    <form action="{% url 'PostBox:feedback' user.id %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Post Feedback"/>
+    </form>
 
-<h1>Feedback post to <cite>{{ user_name }}</cite> :</h1>
-<hr>
-
-
-{% endblock %}
+{% endblock content %}

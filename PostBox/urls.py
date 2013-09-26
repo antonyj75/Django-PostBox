@@ -9,4 +9,5 @@ urlpatterns = patterns('',
                        url(r'^selection/$', views.selection, name='selection'),
                        url(r'^(?P<user_id>\d+)/thankyou/$', views.thankyou, name='thankyou'),
                        url(r'^(?P<user_id>\d+)/feedback/$', views.feedback, name='feedback'),
+                       url(r'^(?P<sender>\w+)/thanks', views.success, name='success'),
                        )

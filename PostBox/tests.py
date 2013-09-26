@@ -6,8 +6,10 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from django.utils import timezone
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
+from PostBox.models import Feedback
 
 class PostBoxViewTests(TestCase):
     def test_welcome_message(self):
@@ -35,3 +37,17 @@ class PostBoxViewTests(TestCase):
         response = self.client.get(reverse('PostBox:feedback', args = (user1.id,)))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Feedback post to <cite>Test')
+
+
+class PostBoxModelTests(TestCase):
+    def test_feedback_entry(self):
+        """
+        Verify that when a feedback is submitted, it is associated with the intended user.
+        """
+        feedbackRecipient = User.objects.create(username='Test', password='password')
+        feedbackEntry = Feedback.objects.create(example='You did not post code for review',
+                                                consequence='This may lead to bad code',
+                                                suggestion='Please post code for review',
+                                                user=feedbackRecipient, date=timezone.now())
+        feedbackRead = Feedback.objects.get(user_id=feedbackRecipient.id)
+        self.assertEqual(feedbackEntry.example, feedbackRead.example)

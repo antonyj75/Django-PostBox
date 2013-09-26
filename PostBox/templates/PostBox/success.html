@@ -1,0 +1,12 @@
+{% extends "PostBox/base_post.html" %}
+{% load staticfiles %}
+
+{% block title %}Great Work!{% endblock %}
+
+{% block header %}
+<h1>Good work {{  sender }}. Your input would help the team get better!</h1>
+{% endblock header %}
+
+{% block image %}
+    <img src="{% static "PostBox/images/success.jpg" %}" alt="Success image"/><br/><br/>
+{% endblock image %}
