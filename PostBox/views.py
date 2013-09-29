@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from PostBox.models import Feedback
+from django import forms
 from django.forms import ModelForm
 from django.utils import timezone
 
@@ -34,8 +35,10 @@ def thankyou(request, user_id):
     return render(request, 'PostBox/thankyou.html', {'user_name': user.username})
 
 class FeedbackForm(ModelForm):
+    sender = forms.CharField(label='Yours Sincerely,')
     class Meta:
         model = Feedback
+        exclude = ('date', 'user')
 
 def feedback(request, user_id):
     user = get_object_or_404(User, pk=user_id)
