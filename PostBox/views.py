@@ -35,7 +35,9 @@ def thankyou(request, user_id):
     return render(request, 'PostBox/thankyou.html', {'user_name': user.username})
 
 class FeedbackForm(ModelForm):
-    sender = forms.CharField(label='Yours Sincerely,')
+    sender = forms.CharField(label='Yours Sincerely,', required=False,
+                             help_text='Your feedback is anonymous. \
+                              But you can put your name here in case you want the manager know who sent the feedback.')
     class Meta:
         model = Feedback
         exclude = ('date', 'user')
@@ -48,7 +50,10 @@ def feedback(request, user_id):
         if form.is_valid():
             myfeedback.date = timezone.now()
             form.save()
-            return redirect('PostBox:success', sender=myfeedback.sender)
+            feedbackSender = myfeedback.sender
+            if myfeedback.sender == '':
+                feedbackSender = 'AnonymousFeedbackGiver'
+            return redirect('PostBox:success', sender=feedbackSender)
     return render(request, 'PostBox/feedback.html', {'user': user, 'form': form,})
 
 def success(request, sender):
